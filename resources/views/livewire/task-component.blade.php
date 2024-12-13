@@ -49,8 +49,8 @@
                             <td class="p-3 px-5">{{$item->title}}</td>
                             <td class="p-3 px-5">{{$item->descripcion}}</td>
                             <td class="p-3 px-5 flex justify-end">
-                                <button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Editar</button>
-                                <button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Borrar</button>
+                                <button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline" wire:click="openCreatemodal({{$item}})">Editar</button>
+                                <button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline" wire:click="borrarTarea({{$item}})">Borrar</button>
                             </td>
                         </tr>
                     @endforeach
@@ -65,14 +65,17 @@
                     <div class="w-full">
                         <div class="m-8 my-20 max-w-[400px] mx-auto">
                             <div class="mb-8">
-                                <h1 class="mb-4 text-3xl font-extrabold">Crear Tarea</h1>
+                                <h1 class="mb-4 text-3xl font-extrabold">
+                                    {{isset($this->editarTask->id) ? "Actualizar" : "Crear nueva"}}
+                                    Tarea</h1>
                                 <form>
                                     <input class="w-full mb-4 rounded" type="text" wire:model="title" name="title" id="title" autocomplete="title" placeholder="Tarea">
                                     <textarea class="w-full rounded" type="text" wire:model="descripcion" name="descripcion" id="descripcion" autocomplete="descripcion" placeholder="Descripcion"></textarea>
                                 </form>
                             </div>
                             <div class="space-y-4">
-                                <button class="p-3 bg-black rounded-full text-white w-full font-semibold" wire:click="crearTareaModal">Crear</button>
+                                <button class="p-3 bg-black rounded-full text-white w-full font-semibold" wire:click="crearTareaModal">
+                                    {{isset($this->editarTask->id) ? "Actualizar" : "Crear nueva"}} Tarea</button>
                                 <button class="p-3 bg-white border rounded-full w-full font-semibold" wire:click="closeModal">Cancelar</button>
                             </div>
                         </div>
