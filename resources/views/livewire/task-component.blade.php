@@ -23,7 +23,7 @@
                             <td class="p-3 px-5 flex justify-end">
                                 @if ((isset($item->pivot) && $item->pivot->permisos == 'editar') || auth()->user()->id == $item->user_id)
                                     <button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline" wire:click="openCreatemodal({{$item}})">Editar</button>
-                                    <button type="button" class="mr-3 text-sm bg-purple-500 hover:bg-purple-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline" wire:click="abrirCompartir">Compartir</button>
+                                    <button type="button" class="mr-3 text-sm bg-purple-500 hover:bg-purple-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline" wire:click="abrirCompartir({{$item}})">Compartir</button>
                                     <button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline" wire:click="borrarTarea({{$item}})"
                                     wire:confirm="¿Deseas borrar la tarea?">Borrar</button>
                                 @endif
